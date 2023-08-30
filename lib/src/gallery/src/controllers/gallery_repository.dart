@@ -53,7 +53,7 @@ class GalleryRepository {
 
       final albums = await PhotoManager.getAssetPathList(type: type);
 
-      for (var i = 0; i < albums.length; i++) {
+      for (var i = 0; i < albums.length -1; i++) {
         if (albums[i].name.toLowerCase() == 'hidden') {
           albums.removeAt(i);
         }
