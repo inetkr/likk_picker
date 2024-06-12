@@ -28,7 +28,7 @@ class CameraCloseButton extends StatelessWidget {
       },
       child: InkWell(
         onTap: () {
-          SystemChrome.setEnabledSystemUIOverlays(SystemUiOverlay.values);
+          SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: SystemUiOverlay.values);
           Navigator.of(context).pop();
         },
         child: Container(
