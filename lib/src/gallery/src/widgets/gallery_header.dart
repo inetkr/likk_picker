@@ -6,7 +6,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 // ignore: always_use_package_imports
-import '../controllers/gallery_repository.dart';
+import '../controllers/gallery_repository.dart' as gallery_repository;
 // ignore: always_use_package_imports
 import '../gallery_view.dart';
 // ignore: always_use_package_imports
@@ -37,7 +37,7 @@ class GalleryHeader extends StatefulWidget {
   final ValueNotifier<bool> albumVisibility;
 
   ///
-  final ValueNotifier<AlbumType> albumNotifier;
+  final ValueNotifier<gallery_repository.AlbumType> albumNotifier;
 
   @override
   _GalleryHeaderState createState() => _GalleryHeaderState();
@@ -130,14 +130,14 @@ class _AnimatedDropdown extends StatelessWidget {
   final ValueNotifier<bool> albumVisibility;
 
   ///
-  final ValueNotifier<AlbumType> albumNotifier;
+  final ValueNotifier<gallery_repository.AlbumType> albumNotifier;
 
   ///
-  final Widget Function(BuildContext, BaseState<AssetPathEntity>, Widget?)?
+  final Widget Function(BuildContext, gallery_repository.BaseState<AssetPathEntity>, Widget?)?
       builder;
 
   Widget _child(bool visible) {
-    return ValueListenableBuilder<AlbumType>(
+    return ValueListenableBuilder<gallery_repository.AlbumType>(
       valueListenable: albumNotifier,
       builder: builder ??
           (context, album, child) {

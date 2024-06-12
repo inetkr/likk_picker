@@ -10,7 +10,7 @@ import 'package:permission_handler/permission_handler.dart';
 
 // ignore: always_use_package_imports
 // ignore: always_use_package_imports
-import 'controllers/gallery_repository.dart';
+import 'controllers/gallery_repository.dart' as gallery_repository;
 // ignore: always_use_package_imports
 // ignore: always_use_package_imports
 import 'entities/gallery_value.dart';
@@ -586,14 +586,14 @@ class GalleryController extends ValueNotifier<GalleryValue> {
         headerSetting = headerSetting ?? const HeaderSetting(),
         setting = gallerySetting ?? const GallerySetting(),
         _panelController = PanelController(),
-        _albumsNotifier = ValueNotifier(const BaseState()),
-        _albumNotifier = ValueNotifier(const BaseState()),
-        _entitiesNotifier = ValueNotifier(const BaseState()),
-        _recentEntities = ValueNotifier(const BaseState()),
+        _albumsNotifier = ValueNotifier(const gallery_repository.BaseState()),
+        _albumNotifier = ValueNotifier(const gallery_repository.BaseState()),
+        _entitiesNotifier = ValueNotifier(const gallery_repository.BaseState()),
+        _recentEntities = ValueNotifier(const gallery_repository.BaseState()),
         _albumVisibility = ValueNotifier(false),
         requestType = requestType ?? RequestType.image,
         super(const GalleryValue()) {
-    _repository = GalleryRepository(
+    _repository = gallery_repository.GalleryRepository(
       albumsNotifier: _albumsNotifier,
       albumNotifier: _albumNotifier,
       entitiesNotifier: _entitiesNotifier,
@@ -616,19 +616,19 @@ class GalleryController extends ValueNotifier<GalleryValue> {
   final PanelController _panelController;
 
   /// Likk repository
-  late final GalleryRepository _repository;
+  late final gallery_repository.GalleryRepository _repository;
 
   /// Albums notifier
-  final ValueNotifier<AlbumsType> _albumsNotifier;
+  final ValueNotifier<gallery_repository.AlbumsType> _albumsNotifier;
 
   /// Current album notifier
-  final ValueNotifier<AlbumType> _albumNotifier;
+  final ValueNotifier<gallery_repository.AlbumType> _albumNotifier;
 
   /// Current album entities notifier
-  final ValueNotifier<EntitiesType> _entitiesNotifier;
+  final ValueNotifier<gallery_repository.EntitiesType> _entitiesNotifier;
 
   /// Recent entities notifier
-  final ValueNotifier<EntitiesType> _recentEntities;
+  final ValueNotifier<gallery_repository.EntitiesType> _recentEntities;
 
   /// Recent entities notifier
   final ValueNotifier<bool> _albumVisibility;
